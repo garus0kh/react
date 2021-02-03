@@ -5,17 +5,20 @@ import CalTrade from './components/CalTrade';
 import CalGet from './components/CalGet';
 import MyNav from './components/MyNav';
 import { Component } from 'react';
+import Welcome from './components/Welcome';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      mode: 'property'
+      mode: 'welcome'
     }
   }
   getContent() {
     var _main = null;
-    if(this.state.mode === 'property') {
+    if(this.state.mode === 'welcome') {
+      _main = <Welcome />
+    } else if(this.state.mode === 'property') {
       _main = <CalProperty />
     } else if(this.state.mode === 'trade') {
       _main = <CalTrade />
@@ -33,7 +36,7 @@ class App extends Component {
             mode:_mode
           })
         }.bind(this)}/>
-          { this.getContent() }
+        { this.getContent() }
       </div>
     );
   }

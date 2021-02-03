@@ -1,17 +1,12 @@
-import React, { Component, useState } from "react";
-import Tab from 'react-bootstrap/Tabs';
-import Tabs from 'react-bootstrap/Tabs';
-import Sonnet from 'react-bootstrap/Tabs';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-
+import React, { useState } from "react";
+import { Button, Form, Tab, Tabs } from 'react-bootstrap';
 
 function ShowCalOne () {
-    const [count, setCount] = useState(100);
+    const [count, setCount] = useState(0);
     const [c, setc] = useState(0);
     const [b, setb] = useState(0);
 
-    return (
+return (
         <div>
             <Form>
                 <Form.Group controlId="formBasicEmail">
@@ -19,12 +14,10 @@ function ShowCalOne () {
                     <Form.Control type="text" value={0} />
                     <Form.Text className="text-muted">
                     공시지가는 여기서 확인하세요 {count}
-                    <Button onClick={() => setCount(count+1)}>+1억</Button>
-                    <button placeholder="0">+1천</button>
-                    <button placeholder="0">+1백</button>
                     </Form.Text>
                 </Form.Group>
 
+            <button size="sm" onClick={() => setCount(count+100000)}>+10억</button>
                 <Form.Group controlId="formBasicPassword">
                     <Form.Label>평형</Form.Label>
                     <Form.Control type="text" placeholder="평형" />
@@ -39,7 +32,7 @@ function ShowCalOne () {
                     지역은 여기서 확인하세요
                     </Form.Text>
                 </Form.Group>
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={() => setCount(count+1)}>
                     계산하기
                 </Button>
                 </Form>
@@ -87,30 +80,25 @@ function ControlledTabs() {
         onSelect={(k) => setKey(k)}
       >
         <Tab eventKey="one" title="1주택자">
-          <Sonnet />
           { _main }
         </Tab>
         <Tab eventKey="two" title="다주택자">
-          <Sonnet />
           { _main }
         </Tab>
         <Tab eventKey="three" title="오피스텔">
-          <Sonnet />
           { _main }
         </Tab>
       </Tabs>
     );
   }
 
-class CalProperty extends Component {
-    render () {
-        return (
-            <div>
-                <h1>재산세!!</h1>
-                <ControlledTabs />
-            </div>
-        )
-    }
+function CalProperty() {
+    return (
+        <div>
+            <h1>재산세를 쉽게 계산해드려요 ^^</h1>
+            <ControlledTabs />
+        </div>
+    )
 }
 
 export default CalProperty;
